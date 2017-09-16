@@ -1697,6 +1697,8 @@ class CodeEditor(TextEditBaseWidget):
             data = block.userData()
             if not data:
                 data = BlockUserData(self)
+            if (message, error) in data.code_analysis:
+                continue
             data.code_analysis.append( (message, error) )
             block.setUserData(data)
             refs = re.findall(r"\'[a-zA-Z0-9_]*\'", message)
